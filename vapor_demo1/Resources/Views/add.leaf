@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <title>Add Todo</title>
+  </head>
+  <body>
+    <h1>Add Todo</h1>
+    <form method="post" action="/todos">
+      <label for="title">Title:</label><br>
+      <input type="text" id="title" name="title"><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
