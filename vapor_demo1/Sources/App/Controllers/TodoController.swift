@@ -2,13 +2,6 @@ import Vapor
 import NIO
 
 final class TodoController {
-    func list(req: Request) throws -> EventLoopFuture<View> {
-            return Todo.query(on: req.db).all().flatMap { todos in
-                let context = ["todos": todos]
-                return req.view.render("todos", context)
-            }
-        }
-    
     func create(req: Request) throws -> EventLoopFuture<Response> {
         let title = try req.content.get(String.self, at: "title")
         print(title)
@@ -30,18 +23,7 @@ final class TodoController {
             .transform(to: .ok)
     }
     
-    func add(req: Request) throws -> EventLoopFuture<View> {
-            return req.view.render("add")
-    }
-    
     func listAll(req: Request) throws -> EventLoopFuture<[Todo]> {
             return Todo.query(on: req.db).all()
     }
 }
-
-//extension TodoController: RouteCollection {
-//    func boot(routes: RoutesBuilder) throws {
-//        let todoRoute = routes.grouped("todos")
-//        todoRoute.get(use: index)
-//    }
-//}

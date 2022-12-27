@@ -2,10 +2,8 @@ import Vapor
 import Leaf
 
 func routes(_ app: Application) throws {
-    
     let todoController = TodoController()
     app.get("todos", use: todoController.listAll)
-    app.get("add", use: todoController.add)
     app.post("todos", use: todoController.create)
     app.put("todos", ":todoID", use: todoController.update)
     app.delete("todos", ":todoID", use: todoController.delete)
@@ -13,18 +11,10 @@ func routes(_ app: Application) throws {
     app.get { req async in
         "It works!"
     }
-
-    app.get("hello") { req async -> String in
-        "Hello, world!"
-    }
     
     app.get("login") { req -> EventLoopFuture<View> in
-            return req.view.render("login")
+        return req.view.render("login")
     }
-    
-//    app.get("home") { req -> EventLoopFuture<View> in
-//            return req.view.render("home")
-//    }
     
     app.post("login") { req -> Response in
         // Get the username and password from the request body
