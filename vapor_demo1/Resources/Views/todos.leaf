@@ -1,19 +1,12 @@
+<!DOCTYPE html>
+<head>
+</head>
 <html>
-  <head>
-    <title>Todo List</title>
-  </head>
-  <body>
-    <h1>Todo List</h1>
-    <ul>
-      #for(todo in todos) {
-        <li>
-          #if(todo.completed) {
-            <strike>#(todo.title)</strike>
-          } else {
-            #(todo.title)
-          }
-        </li>
-      }
-    </ul>
-  </body>
+    <body>
+        <ul>
+        #for(todo in todos):
+            <li>#(todo)</li>
+        #endfor
+        </ul>
+    </body>
 </html>

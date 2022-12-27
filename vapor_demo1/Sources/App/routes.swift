@@ -4,7 +4,7 @@ import Leaf
 func routes(_ app: Application) throws {
     
     let todoController = TodoController()
-    app.get("todos", use: todoController.list)
+    app.get("todos", use: todoController.listAll)
     app.get("add", use: todoController.add)
     app.post("todos", use: todoController.create)
     app.put("todos", ":todoID", use: todoController.update)
